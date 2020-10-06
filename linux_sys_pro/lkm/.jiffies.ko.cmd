@@ -1,0 +1,1 @@
+cmd_/home/kimsaeyoung/Study/sys_pro/lkm/jiffies.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/kimsaeyoung/Study/sys_pro/lkm/jiffies.ko /home/kimsaeyoung/Study/sys_pro/lkm/jiffies.o /home/kimsaeyoung/Study/sys_pro/lkm/jiffies.mod.o;  true
