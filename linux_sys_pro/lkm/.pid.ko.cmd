@@ -1,0 +1,1 @@
+cmd_/home/kimsaeyoung/Study/linux_sys_pro/lkm/pid.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/kimsaeyoung/Study/linux_sys_pro/lkm/pid.ko /home/kimsaeyoung/Study/linux_sys_pro/lkm/pid.o /home/kimsaeyoung/Study/linux_sys_pro/lkm/pid.mod.o;  true
