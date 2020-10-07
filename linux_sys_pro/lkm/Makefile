@@ -1,5 +1,5 @@
 
-obj-m := color_list.o
+obj-m := collatz.o
 KDIR := /lib/modules/$(shell uname -r)/build
 VERBOSE = 0
 
