@@ -15,16 +15,15 @@ MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("ps");
 MODULE_AUTHOR("KIM");
 
-ssize_t proc_read(struct file *file, char __user *usr_buf, size_t count, loff_t *pos);
-
+void dfs(struct task_struct *task);
 static struct file_operations proc_ops = {
 	.owner = THIS_MODULE,
-	.read = proc_read,
 };
 
 int proc_init(void)
 {
 	proc_create(PROC_NAME, 0666, NULL, &proc_ops);
+	dfs(&init_task);
 	return 0;
 }
 
@@ -33,24 +32,16 @@ void proc_exit(void)
 	remove_proc_entry(PROC_NAME, NULL);
 }
 
-ssize_t proc_read(struct file *file, char __user *usr_buf, size_t count, loff_t *pos)
+void dfs(struct task_struct *task)
 {
-	static int flag  = 0;
-
-	if(flag){
-		flag = 0;
-		return 0;
-	}
-
-	flag = 1;
-
-	struct task_struct *task;
+	struct task_struct *next_task;
 	struct list_head *list;
 
-	list_for_each(list, init_task.children){
-		task = list_entry(list, struct task_struct, sibling);
+	list_for_each(list, &(task->children)){
+		next_task = list_entry(list, struct task_struct, sibling);
 
-		printk("command = [%s] pid = [%d] state = [%d]", task->comm, task->pid, task->state);
+		printk("command = [%s] pid = [%d] state = [%d]", next_task->comm, next_task->pid, next_task->state);
+		dfs(next_task);		
 	}
 	return 0;
 }

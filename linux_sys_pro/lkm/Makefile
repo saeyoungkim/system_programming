@@ -1,5 +1,5 @@
 
-obj-m := pid.o
+obj-m := color_list.o
 KDIR := /lib/modules/$(shell uname -r)/build
 VERBOSE = 0
 
