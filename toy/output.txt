@@ -1,0 +1,10 @@
+total 112
+drwxr-xr-x  9 s.kim  2037353632    288 10  4 21:35 .
+drwxr-xr-x  6 s.kim  2037353632    192 10  3 09:55 ..
+-rwxr-xr-x  1 s.kim  2037353632  13884 10  4 21:35 kmsh
+-rw-r--r--  1 s.kim  2037353632   5649 10  4 21:35 kmsh.c
+-rwxr-xr-x  1 s.kim  2037353632   9124  9 20 23:14 lftp
+-rw-r--r--  1 s.kim  2037353632   1676  9 20 23:14 lftp.c
+-rwxr-xr-x  1 s.kim  2037353632   8840  9 19 16:33 nmap
+-rw-r--r--  1 s.kim  2037353632    836  9 19 16:53 nmap.c
+-rwx------  1 s.kim  2037353632      0 10  4 21:35 output.txt

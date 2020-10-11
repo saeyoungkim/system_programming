@@ -19,8 +19,6 @@ int main(int argc, char* argv[]){
     const char* url = argv[1];
     printf("url : %s\n", url);
 
-    // command check
-    
     // get ip address
     struct addrinfo hints;
     memset(&hints, 0, sizeof(hints));
@@ -55,18 +53,18 @@ int main(int argc, char* argv[]){
 
     // print
     while(1){
+        memset(buf, 0, SIZE);
+        read_num = recv(sock, buf, SIZE, 0);
+        printf("%d\n", read_num);
+
+        printf("%s", buf);
+
         printf("lftp :~> \n");
         fgets(buf, SIZE, stdin);
 
         char* command = strchr( buf, '\n' );
         write_num = send(sock, command, SIZE, 0);
         printf("%d\n", write_num);
-        
-        memset(buf, 0, SIZE);
-        read_num = recv(sock, buf, SIZE, 0);
-        printf("%d\n", read_num);
-
-        printf("%s", buf);
     }
 
     close(sock); 
