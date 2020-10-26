@@ -7,7 +7,7 @@ public class MergeSortHelper extends RecursiveTask<Boolean> {
     private int left, right;
 
     public static Boolean StartMerge(int _left, int _right, int[] _arr) {
-        return new ForkJoinPool(4).invoke(new MergeSortHelper(_left, _right, _arr));
+        return new ForkJoinPool(8).invoke(new MergeSortHelper(_left, _right, _arr));
     }
     
     public MergeSortHelper(int _left, int _right, int[] _arr) {
@@ -47,6 +47,8 @@ public class MergeSortHelper extends RecursiveTask<Boolean> {
     }
 
     public Boolean compute() {
+        System.out.println(Thread.currentThread().getName() + " " + Thread.currentThread().getId());
+
         if(left > right) return false;
         if(left == right) return true;
 
