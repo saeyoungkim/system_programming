@@ -1,0 +1,7 @@
+*
+
+# white list
+!*/
+!.gitignore
+!*.java
+!*.c
