@@ -127,28 +127,27 @@ void _kmsh_launch(struct _arguments* arg) {
             exit(1);
         }
         else if(pid == 0){
-            close(fd[WRITE_ONLY]);
-
-            if(dup2(fd[READ_ONLY], STDIN_FILENO) == -1){
-                perror("Cannot duplicate file descriptor to stdout table number.\n");
-                exit(4);
-            }
-
-            execvp(arg->args[has_pipe + 1], arg->args + has_pipe + 1);
-            close(fd[READ_ONLY]);
-        }
-        else {
             close(fd[READ_ONLY]);
 
             if(dup2(fd[WRITE_ONLY], STDOUT_FILENO) == -1){
                 perror("Cannot duplicate file descriptor to stdout table number.\n");
                 exit(4);
             }
-            
+
             execvp(arg->args[0], arg->args);
-            
-            wait(NULL);
             close(fd[WRITE_ONLY]);
+        }
+        else {
+            close(fd[WRITE_ONLY]);
+
+            if(dup2(fd[READ_ONLY], STDIN_FILENO) == -1){
+                perror("Cannot duplicate file descriptor to stdout table number.\n");
+                exit(4);
+            }
+            
+            execvp(arg->args[has_pipe + 1], arg->args + has_pipe + 1);
+            wait(NULL);
+            close(fd[READ_ONLY]);
         }
 
         return ;
