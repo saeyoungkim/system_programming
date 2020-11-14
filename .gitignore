@@ -5,3 +5,6 @@
 !.gitignore
 !*.java
 !*.c
+!*.cpp
+!*.h
+!*.hpp
